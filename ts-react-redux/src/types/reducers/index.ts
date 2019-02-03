@@ -12,7 +12,12 @@ export interface ProfessionState {
   location: string
 }
 
+export interface FruitsState {
+  bucket: Array<{ name: string, price: number }>
+}
+
 export interface AppState {
   user: UserState,
-  profession: ProfessionState
+  profession: ProfessionState,
+  fruits: FruitsState
 }

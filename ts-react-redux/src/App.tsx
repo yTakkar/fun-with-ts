@@ -5,6 +5,7 @@ import store from './store';
 import Name from './components/Name';
 import User from './components/User';
 import Profession from './components/Profession'
+import Fruits from './components/Fruits'
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <Name name='Faiyaz' />
           <User />
           <Profession />
+          <Fruits />
         </div>
       </Provider>
     );
