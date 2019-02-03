@@ -148,6 +148,15 @@ var fn = function fn(arg) {
 };
 
 fn(['dd']);
+var user = {
+  name: 'faiyaz',
+  age: 20,
+  city: 'mumbai'
+};
+Object.keys(user).map(function (u) {
+  console.log(u, user[u]);
+  console.log(u, user[u]);
+});
 },{}],"src/class.ts":[function(require,module,exports) {
 var PersonClass =
 /** @class */
@@ -211,6 +220,26 @@ var responseFn = function responseFn(direction) {
 };
 
 responseFn(ResponseFN.UP);
+},{}],"src/overloads.ts":[function(require,module,exports) {
+function getArray() {
+  var args = [];
+
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i];
+  }
+
+  if (args.length === 1 && typeof args[0] === 'number') {
+    return new Array(args[0]);
+  } else if (args.length > 1) {
+    return Array.from(args);
+  }
+}
+
+console.log(getArray(5)); //?
+
+console.log(getArray('a', 'b', 'c')); //?
+
+console.log(getArray('A'));
 },{}],"src/index.ts":[function(require,module,exports) {
 "use strict";
 
@@ -221,7 +250,9 @@ require("./interface");
 require("./class");
 
 require("./enum");
-},{"./interface":"src/interface.ts","./class":"src/class.ts","./enum":"src/enum.ts"}],"../../.nvm/versions/node/v8.12.0/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+require("./overloads");
+},{"./interface":"src/interface.ts","./class":"src/class.ts","./enum":"src/enum.ts","./overloads":"src/overloads.ts"}],"../../../.nvm/versions/node/v8.12.0/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -248,7 +279,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46669" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37373" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -390,5 +421,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["../../.nvm/versions/node/v8.12.0/lib/node_modules/parcel/src/builtins/hmr-runtime.js","src/index.ts"], null)
+},{}]},{},["../../../.nvm/versions/node/v8.12.0/lib/node_modules/parcel/src/builtins/hmr-runtime.js","src/index.ts"], null)
 //# sourceMappingURL=/src.f10117fe.map
