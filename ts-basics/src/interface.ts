@@ -68,3 +68,34 @@ Object.keys(user).map(u => {
   console.log(u, (user as any)[u])
   console.log(u, (<any>user)[u])
 })
+
+interface Ifn {
+  (arg: 'a' | 'b'): void
+}
+
+const Random: Ifn = arg => {}
+Random('a')
+
+const RR = (arg: string | number) => {}
+RR('a')
+RR('5')
+
+// UNION TYPES
+type Shape = 
+  { kind: 'circle', radius: number } |
+  { kind: 'square', size: number } |
+  { kind: 'rectangle', w: number, h: number }
+
+const getArea = (shape: Shape) => {
+  switch(shape.kind) {
+    case 'circle':
+      return Math.PI * shape.radius ** 2
+    case 'square':
+      return shape.size * 2
+    case 'rectangle':
+      return shape.w * shape.h
+  }
+  throw new Error('Invalid shape')
+}
+
+getArea({ kind: 'circle', radius: 6 })

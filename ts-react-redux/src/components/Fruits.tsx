@@ -1,7 +1,8 @@
 import React from 'react'
-import { FruitsState, AppState } from '../types/reducers';
+import { AppState } from '../types/reducers';
 import { connect } from 'react-redux';
 import { totalPriceSelector } from '../store/selector';
+import { FruitsState } from '../types/reducers/fruits';
 
 interface IProps extends FruitsState {
   totalPrice: number,

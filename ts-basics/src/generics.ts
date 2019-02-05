@@ -60,6 +60,21 @@ FunctionalComponent.displayName = 'dd'
 
 FunctionalComponent({ name: 'faiyaz', age: 18 })
 
+type IFCCC<P> = {
+  (props: P): P,
+  defaultProps?: Function
+}
+
+interface PPP {
+  value: string
+}
+
+const F: IFCCC<PPP> = props => {
+  return props
+}
+
+F({ value: 'f' })
+
 // WITHOUT GENERICS
 interface FCI {
   (props: {

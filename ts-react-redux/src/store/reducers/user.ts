@@ -1,6 +1,6 @@
 import { Reducer } from 'redux'
-import { UserState } from '../../types/reducers';
-import types from '../action_types';
+import types from '../../action_types';
+import { UserState, UserAction } from '../../types/reducers/user';
 
 const initialState = {
   name: 'Faiyaz',
@@ -10,7 +10,7 @@ const initialState = {
   }
 }
 
-const User: Reducer<UserState> = (state = initialState, action) => {
+const User: Reducer<UserState, UserAction> = (state = initialState, action) => {
   switch(action.type) {
     case types.USER_SUCCESS: 
       return { ...state, name: action.payload.value }

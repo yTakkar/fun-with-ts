@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import { FruitsState } from '../../types/reducers';
+import { FruitsState } from '../../types/reducers/fruits';
 
 const initialState = {
   bucket: [
@@ -12,8 +12,8 @@ const initialState = {
   ]
 }
 
-const Friends: Reducer<FruitsState> = (state = initialState, action) => {
+const Fruits: Reducer<FruitsState> = (state = initialState, action) => {
   return state;
 }
 
-export default Friends
+export default Fruits

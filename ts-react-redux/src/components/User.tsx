@@ -1,17 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { AppState } from '../types/reducers';
-import types from '../store/action_types';
-import { Dispatch } from 'redux';
+import userAction from '../actions/user'
+import { UserActionCreator } from '../types/actions';
 
 interface IProps {
   name: string,
-  location?: {
-    city: string,
-    country: string
-  },
   optional?: string,
-  dispatch: Dispatch
+  userAction: UserActionCreator
 }
 
 class User extends React.PureComponent<IProps> {
@@ -20,7 +16,7 @@ class User extends React.PureComponent<IProps> {
   }
 
   private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.props.dispatch({ type: types.USER_SUCCESS, payload: { value: e.target.value } })
+    this.props.userAction('updateName', e.target.value)
   }
   
   render() {
@@ -36,8 +32,8 @@ class User extends React.PureComponent<IProps> {
 
 const selector = (state: AppState) => {
   const { user } = state;
-  const { name, location } = user;
-  return { name, location }
+  const { name } = user;
+  return { name }
 }
 
-export default connect(selector)(User)
+export default connect(selector, { userAction })(User)

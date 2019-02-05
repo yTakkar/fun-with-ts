@@ -1,0 +1,8 @@
+enum types {
+  USER_SUCCESS = 'USER_SUCCESS',
+  USER_REQUEST = 'USER_REQUEST',
+
+  PROFESSION_SUCCESS = 'PROFESSION_SUCCESS'
+}
+
+export default types

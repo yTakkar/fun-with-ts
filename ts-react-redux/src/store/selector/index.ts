@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { FruitsState } from "../../types/reducers";
+import { FruitsState } from "../../types/reducers/fruits";
 
 export const fruitsBucketSelector = (fruits: FruitsState) => fruits.bucket
 
