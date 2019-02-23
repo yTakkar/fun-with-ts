@@ -1,11 +1,28 @@
-import { Dispatch } from "redux";
+export namespace Profession {
+  export interface UpdateProfession {
+    (designation: string, company: string, location: string): void
+  }
 
-// interface ACase<Type, Args> {
-//   (type: Type, ...args: [Args]): { (dispatch: Dispatch, getState: Function): void }
-// }
+  export type ActionCreator = {
+    (source: 'profession'): {
+      updateProfession: UpdateProfession
+    }
+  }
+}
 
-export type ProfessionActionCreator =
-  { (type: 'updateProfession', ...args: [string, string, string]): { (dispatch: Dispatch): any } }
+export namespace User {
+  export interface UpdateName<T=void> {
+    (value: string): T
+  }
 
-export type UserActionCreator = 
-  { (type: 'updateName', ...args: [string]): any }
+  export interface ResetName<T=void> {
+    (payload: boolean): T
+  }
+
+  export type ActionCreator = {
+    (source: 'user'): {
+      updateName: UpdateName,
+      resetName: ResetName
+    }
+  }
+}

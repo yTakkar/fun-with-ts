@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { AppState } from '../types/reducers';
 import userAction from '../actions/user'
-import { UserActionCreator } from '../types/actions';
+import { User as U } from '../types/actions';
 
 interface IProps {
   name: string,
   optional?: string,
-  userAction: UserActionCreator
+  userAction: U.ActionCreator
 }
 
 class User extends React.PureComponent<IProps> {
@@ -15,8 +15,14 @@ class User extends React.PureComponent<IProps> {
     optional: 'rjb32ojb'
   }
 
+  componentDidMount() {
+    this.doAction.resetName(true)
+  }
+
+  doAction = this.props.userAction('user')
+
   private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.props.userAction('updateName', e.target.value)
+    this.doAction.updateName(e.target.value)
   }
   
   render() {

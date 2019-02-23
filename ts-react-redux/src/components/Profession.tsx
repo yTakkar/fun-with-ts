@@ -3,16 +3,17 @@ import { AppState } from '../types/reducers'
 import { connect } from 'react-redux';
 import professionAction from '../actions/profession'
 import { ProfessionState } from '../types/reducers/profession';
-import { ProfessionActionCreator } from '../types/actions';
+import { Profession as P } from '../types/actions';
 
 interface IProps extends ProfessionState {
-  professionAction: ProfessionActionCreator
+  professionAction: P.ActionCreator
 }
 
 const Profession: React.FC<IProps> = props => {
-  const updateProfession = () => {
-    props.professionAction('updateProfession', 'designation', 'company', 'location')
-  }
+
+  const doAction = props.professionAction('profession')
+
+  const updateProfession = () => doAction.updateProfession('designation', 'company', 'location')
 
   return (
     <div>

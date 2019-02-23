@@ -99,3 +99,28 @@ const getArea = (shape: Shape) => {
 }
 
 getArea({ kind: 'circle', radius: 6 })
+
+type IFnn = 
+  ['circle', number] | 
+  ['rectangle', number, number]
+
+const Fnn = (...args: IFnn) => {
+  const [kind] = args;
+  switch (kind) {
+    case 'circle':
+      return Math.PI * args[1] ** 2
+    case 'rectangle':
+      return args[1] * args[2]
+  }
+  throw new Error('Invalid shape')
+}
+
+Fnn('circle', 4)
+
+interface States {
+  [state: string]: boolean;
+}
+
+let s: States = { 'enabled': true, 'maximized': false };
+console.log(s);
+console.log(s['maximized']);

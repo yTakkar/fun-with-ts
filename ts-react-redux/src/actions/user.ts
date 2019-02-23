@@ -1,20 +1,18 @@
-import {  UserActionCreator } from "../types/actions";
+import { User } from "../types/actions";
 import types from "../action_types";
-import { Dispatch } from "redux";
 import { UserSuccess } from "../types/reducers/user";
+import { Dispatch } from "redux";
 
-const UserAction: UserActionCreator = (type, ...args) => (dispatch: Dispatch) => {
-  switch (type) {
-    case 'updateName': {
-      return dispatch<UserSuccess>({
-        type: types.USER_SUCCESS,
-        payload: { value: args[0] }
-      })
-    }
+const UserAction = (source: 'user') => (dispatch: Dispatch) => {
+  const updateName: User.UpdateName = value => {
+    dispatch<UserSuccess>({ type: types.USER_SUCCESS, payload: { value } })
+  }
 
-    default:
-      console.log(`${type} no supported`)
-      return
+  const resetName: User.ResetName = payload => dispatch({ type: types.USER_RESET, payload })
+
+  return {
+    updateName,
+    resetName
   }
 }
 
